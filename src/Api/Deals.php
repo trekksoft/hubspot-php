@@ -50,10 +50,9 @@ class Deals extends Api
     public function recentlyModified(array $params = [])
     {
         $endpoint = "/deals/v1/deal/recent/modified";
-
-        $options['query'] = $this->getQuery($params);
-
-        return $this->request('get', $endpoint, $options);
+        $queryString = $this->buildQueryString($params);
+        
+        return $this->request('get', $endpoint, [], $queryString);
     }
 
     /**
@@ -63,10 +62,9 @@ class Deals extends Api
     public function recentlyCreated(array $params = [])
     {
         $endpoint = "/deals/v1/deal/recent/created";
+        $queryString = $this->buildQueryString($params);
 
-        $options['query'] = $this->getQuery($params);
-
-        return $this->request('get', $endpoint, $options);
+        return $this->request('get', $endpoint, [], $queryString);
     }
 
     /**
@@ -89,7 +87,7 @@ class Deals extends Api
     {
         $endpoint = "/deals/v1/deal/{$dealId}/associations/COMPANY";
         
-        $queryString = $this->generateBatchQuery('id', (array)$companyIds);
+        $queryString = $this->buildQueryString(['id' => (array)$companyIds]);
 
         return $this->request('put', $endpoint, [], $queryString);
     }
@@ -103,7 +101,7 @@ class Deals extends Api
     {
         $endpoint = "/deals/v1/deal/{$dealId}/associations/COMPANY";
         
-        $queryString = $this->generateBatchQuery('id', (array)$companyIds);
+        $queryString = $this->buildQueryString(['id' => (array)$companyIds]);
 
         return $this->request('delete', $endpoint, [], $queryString);
     }
@@ -117,7 +115,7 @@ class Deals extends Api
     {
         $endpoint = "/deals/v1/deal/{$dealId}/associations/CONTACT";
         
-        $queryString = $this->generateBatchQuery('id', (array)$contactIds);
+        $queryString = $this->buildQueryString(['id' => (array)$contactIds]);
 
         return $this->request('put', $endpoint, [], $queryString);
     }
@@ -131,7 +129,7 @@ class Deals extends Api
     {
         $endpoint = "/deals/v1/deal/{$dealId}/associations/CONTACT";
         
-        $queryString = $this->generateBatchQuery('id', (array)$contactIds);
+        $queryString = $this->buildQueryString(['id' => (array)$contactIds]);
 
         return $this->request('delete', $endpoint, [], $queryString);
     }
