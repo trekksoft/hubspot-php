@@ -101,4 +101,9 @@ class HubSpotServiceSpec extends ObjectBehavior
     {
         $this->events()->shouldHaveType('Fungku\HubSpot\Api\Events');
     }
+
+    function it_creates_a_deals_api_class()
+    {
+        $this->deals()->shouldHaveType('Fungku\HubSpot\Api\Deals');
+    }
 }
