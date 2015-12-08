@@ -141,7 +141,7 @@ If you see something not planned, that you want, make an [issue](https://github.
 
 :white_medium_small_square: Companies Properties :new:
 
-:white_medium_small_square: Deals :new:
+:ballot_box_with_check: Deals :new:
 
 :black_medium_small_square: MarketPlace
 
